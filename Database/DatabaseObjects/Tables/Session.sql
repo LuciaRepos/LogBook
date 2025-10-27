@@ -3,7 +3,7 @@ CREATE TABLE Session(
 	TopicID INT NOT NULL,
 	SesionDate DATETIME DEFAULT GETDATE(),
 	DurationMinutes INT,
-	SesionDescription VARCHAR (500),
+	SessionDescription VARCHAR (500),
 	CreateUser VARCHAR(50) CONSTRAINT DF_CreateUser DEFAULT ORIGINAL_LOGIN(),
     CreateDate DATETIME CONSTRAINT DF_CreateDate DEFAULT GETDATE(),
     LastUpdateUser VARCHAR(50) CONSTRAINT DF_LastUpdateUser DEFAULT ORIGINAL_LOGIN(),
