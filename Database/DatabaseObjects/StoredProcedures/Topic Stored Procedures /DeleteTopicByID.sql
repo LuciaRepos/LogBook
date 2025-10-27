@@ -1,0 +1,7 @@
+CREATE PROCEDURE DeleteTopicByID
+	@TopicID INT
+AS
+BEGIN
+	DELETE FROM [Topic]
+		WHERE TopicID = @TopicID;
+END
