@@ -1,5 +1,5 @@
 CREATE PROCEDURE UpdateExercise
-	@ExerciseID,
+	@ExerciseID INT,
 	@TopicID INT,
 	@ExerciseDescription VARCHAR(150),
 	@Result VARCHAR(500)
