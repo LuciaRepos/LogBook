@@ -6,8 +6,8 @@ CREATE TABLE Session(
 	SessionDescription VARCHAR (500),
 	CreateUser VARCHAR(50) CONSTRAINT DF_CreateUser DEFAULT ORIGINAL_LOGIN(),
     CreateDate DATETIME CONSTRAINT DF_CreateDate DEFAULT GETDATE(),
-    LastUpdateUser VARCHAR(50) CONSTRAINT DF_LastUpdateUser DEFAULT ORIGINAL_LOGIN(),
-    LastUpdateDate DATETIME CONSTRAINT DF_LastUpdateDate DEFAULT GETDATE(),
+    LastUpdateUser VARCHAR(50) NULL,
+    LastUpdateDate DATETIME NULL,
 	CONSTRAINT FK_Session_Topic FOREIGN KEY (TopicID)
 		REFERENCES Topic(TopicID)
 );
