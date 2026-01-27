@@ -3,8 +3,8 @@ CREATE TABLE Exercise(
 	TopicID INT NOT NULL,
 	ExerciseDescription VARCHAR(150),
 	Result VARCHAR(500),
-	CreateUser VARCHAR(50) CONSTRAINT DF_CreateUser DEFAULT ORIGINAL_LOGIN(),
-    CreateDate DATETIME CONSTRAINT DF_CreateDate DEFAULT GETDATE(),
+	CreateUser VARCHAR(50) CONSTRAINT DF_Exercise_CreateUser DEFAULT ORIGINAL_LOGIN(),
+    CreateDate DATETIME CONSTRAINT DF_Exercise_CreateDate DEFAULT GETDATE(),
     LastUpdateUser VARCHAR(50) NULL,
     LastUpdateDate DATETIME NULL,
 	CONSTRAINT FK_Exercise_Topic FOREIGN KEY (TopicID)
