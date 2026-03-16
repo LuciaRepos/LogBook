@@ -1,6 +1,6 @@
 namespace LogBookAPI.Models
 {
-    public class Session
+    public class LogSession
     {
         public int Id { get; set; }
 
