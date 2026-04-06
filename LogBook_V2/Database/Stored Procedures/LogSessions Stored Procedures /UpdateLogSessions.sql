@@ -1,4 +1,4 @@
-CREATE PROCEDURE UpdateSessions
+CREATE PROCEDURE UpdateLogSessions
 	@SessionID INT,
 	@TopicID INT,
 	@SessionDate VARCHAR(500),
@@ -6,7 +6,7 @@ CREATE PROCEDURE UpdateSessions
 	@SessionDescription VARCHAR(500)
 AS
 BEGIN
-	UPDATE [Sessions]
+	UPDATE [LogSessions]
 	SET 
 		TopicID = @TopicID,
 		SessionDate = @SessionDate,
