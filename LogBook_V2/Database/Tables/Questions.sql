@@ -1,4 +1,4 @@
-CREATE TABLE Question(
+CREATE TABLE Questions(
 	QuestionID INT IDENTITY(1,1) PRIMARY KEY,
 	TopicID INT NOT NULL,
 	QuestionStatement VARCHAR(150), 
