@@ -1,0 +1,8 @@
+CREATE PROCEDURE DeleteLogUsersByID
+	@UserID INT
+AS
+BEGIN
+	DELETE FROM [LogUsers]
+		WHERE UserID = @UserID;
+
+END
