@@ -1,0 +1,14 @@
+CREATE TABLE Question(
+	QuestionID INT IDENTITY(1,1) PRIMARY KEY,
+	TopicID INT NOT NULL,
+	QuestionStatement VARCHAR(150), 
+	QuestionDate DATETIME DEFAULT GETDATE(),
+	AnswerDate DATETIME DEFAULT GETDATE(),
+	Answer VARCHAR(600),
+	CreateUser VARCHAR(50) CONSTRAINT DF_Question_CreateUser DEFAULT ORIGINAL_LOGIN(),
+    CreateDate DATETIME CONSTRAINT DF_Question_CreateDate DEFAULT GETDATE(),
+    LastUpdateUser VARCHAR(50) NULL,
+    LastUpdateDate DATETIME NULL,
+	CONSTRAINT FK_Question_Topic FOREIGN KEY (TopicID)
+		REFERENCES Topic(TopicID)
+);
