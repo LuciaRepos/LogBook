@@ -1,7 +1,7 @@
-CREATE PROCEDURE DeleteSessionsByID
+CREATE PROCEDURE DeleteLogSessionsByID
 	@SessionID INT
 AS
 BEGIN
-	DELETE FROM [Sessions]
+	DELETE FROM [LogSessions]
 		WHERE SessionID = @SessionID;
 END
