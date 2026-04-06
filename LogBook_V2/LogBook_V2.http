@@ -1,0 +1,15 @@
+@LogBook_V2_HostAddress = https://localhost:7191
+
+GET {{LogBook_V2_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+POST {{LogBook_V2_HostAddress}}/api/topic
+Content-Type: application/json
+
+{
+    "theme": "SQL",
+    "content": "SELECT"
+}
+
+###
