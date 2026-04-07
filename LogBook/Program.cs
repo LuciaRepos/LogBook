@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using LogBook_V2.Models;
-using LogBook_V2.Data;
+using LogBook.Models;
+using LogBook.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
