@@ -1,7 +1,7 @@
-﻿using LogBook_V2.Models;
+﻿using LogBook.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace LogBook_V2.Data
+namespace LogBook.Data
 {
     public class LogBookDBContext(DbContextOptions<LogBookDBContext> options) : DbContext(options)
     {
