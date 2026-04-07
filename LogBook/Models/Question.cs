@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace LogBook_V2.Models
+namespace LogBook.Models
 {
     public class Question
     {
