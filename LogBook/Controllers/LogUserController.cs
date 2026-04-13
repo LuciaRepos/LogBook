@@ -17,9 +17,25 @@ namespace LogBook.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<LogUser>>> GetAll()
+        public async Task<ActionResult<IEnumerable<LogUser>>> GetAll([FromQuery] string? UserID = null, [FromQuery] string? Email = null, [FromQuery] string? UserName= null)
         {
             var logUsers = await context.LogUsers.ToListAsync();
+
+            if(!string.IsNullOrEmpty(UserID))
+            {
+                logUsers = logUsers.Where(lu => lu.UserID.ToString().Contains(UserID, StringComparison.OrdinalIgnoreCase)).ToList();
+            }
+
+            if (!string.IsNullOrEmpty(Email))
+            {
+                logUsers = logUsers.Where(lu => lu.Email.ToString().Contains(Email, StringComparison.OrdinalIgnoreCase)).ToList();
+            }
+
+            if(!string.IsNullOrEmpty(UserName))
+            {
+                logUsers = logUsers.Where(lu => lu.UserName.ToString().Contains(UserName, StringComparison.OrdinalIgnoreCase)).ToList();
+            }
+
             return Ok(logUsers);
         }
 

@@ -17,9 +17,35 @@ namespace LogBook.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Question>>> GetAll()
+        public async Task<ActionResult<IEnumerable<Question>>> GetAll([FromQuery] string? QuestionID = null, [FromQuery] string? QuestionStatement = null, [FromQuery] string? QuestionDate = null, [FromQuery] string? AnswerDate = null, [FromQuery] string? Answer = null)
         {
             var questions = await context.Questions.ToListAsync();
+
+            if(!string.IsNullOrEmpty(QuestionID))
+            {
+                questions = questions.Where(q => q.QuestionID.ToString().Contains(QuestionID, StringComparison.OrdinalIgnoreCase)).ToList();
+            }
+
+            if(!string.IsNullOrEmpty(QuestionStatement))
+            {
+                questions = questions.Where(q => q.QuestionStatement.ToString().Contains(QuestionStatement, StringComparison.OrdinalIgnoreCase)).ToList();
+            }
+
+            if(!string.IsNullOrEmpty(QuestionDate))
+            {
+                questions = questions.Where(q => q.QuestionDate.ToString().Contains(QuestionDate, StringComparison.OrdinalIgnoreCase)).ToList();
+            }
+
+            if(!string.IsNullOrEmpty(AnswerDate))
+            {
+                questions = questions.Where(q => q.AnswerDate.ToString().Contains(AnswerDate, StringComparison.OrdinalIgnoreCase)).ToList();
+            }
+
+            if (!string.IsNullOrEmpty(Answer))
+            {
+                questions = questions.Where(q => q.Answer != null && q.Answer.Contains(Answer , StringComparison.OrdinalIgnoreCase)).ToList();
+            }
+
             return Ok(questions);
         }
 

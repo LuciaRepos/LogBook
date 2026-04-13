@@ -17,9 +17,30 @@ namespace LogBook.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<LogSession>>> GetAll()
+        public async Task<ActionResult<IEnumerable<LogSession>>> GetAll([FromQuery] string? SessionID = null, [FromQuery] string? SessionDate = null, [FromQuery] string? DurationMinutes = null, [FromQuery] string? SessionDescription = null)
         {
             var logsessions = await context.LogSessions.ToListAsync();
+
+            if(!string.IsNullOrEmpty(SessionID))
+            {
+                logsessions = logsessions.Where(ls => ls.SessionID.ToString().Contains(SessionID, StringComparison.OrdinalIgnoreCase)).ToList();
+            }
+
+            if(!string.IsNullOrEmpty(SessionDate))
+            {
+                logsessions = logsessions.Where(ls => ls.SessionDate.ToString().Contains(SessionDate, StringComparison.OrdinalIgnoreCase)).ToList();
+            }
+
+            if (!string.IsNullOrEmpty(DurationMinutes))
+            {
+                logsessions = logsessions.Where(ls => ls.DurationMinutes.ToString().Contains(DurationMinutes, StringComparison.OrdinalIgnoreCase)).ToList();
+            }
+
+            if (!string.IsNullOrEmpty(SessionDescription))
+            {
+                logsessions = logsessions.Where(ls => ls.SessionDescription.ToString().Contains(SessionDescription, StringComparison.OrdinalIgnoreCase)).ToList();
+            }
+
             return Ok(logsessions);
         }
 

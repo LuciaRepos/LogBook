@@ -6,7 +6,7 @@ namespace LogBook.Models
     {
         [Key]
         public int ExerciseID { get; set; }
-        public string ExerciseDescription { get; set; }
-        public string Result { get; set; }
+        public string? ExerciseDescription { get; set; }
+        public string? Result { get; set; }
     }
 }

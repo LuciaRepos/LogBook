@@ -17,9 +17,25 @@ namespace LogBook.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Exercise>>> GetAll()
+        public async Task<ActionResult<IEnumerable<Exercise>>> GetAll([FromQuery] string? ExerciseID = null, [FromQuery] string? ExerciseDescription = null, [FromQuery] string? Result = null)
         {
             var exercises = await context.Exercises.ToListAsync();
+
+            if (!string.IsNullOrEmpty(ExerciseID))
+            {
+                exercises = exercises.Where(e => e.ExerciseID.ToString().Contains(ExerciseID, StringComparison.OrdinalIgnoreCase)).ToList();
+            }
+
+            if (!string.IsNullOrEmpty(ExerciseDescription))
+            {
+                exercises = exercises.Where(e => e.ExerciseDescription.ToString().Contains(ExerciseDescription, StringComparison.OrdinalIgnoreCase)).ToList();
+            }
+
+            if (!string.IsNullOrEmpty(Result))
+            {
+                exercises = exercises.Where(e => e.Result.ToString().Contains(Result, StringComparison.OrdinalIgnoreCase)).ToList();
+            }
+
             return Ok(exercises);
         }
 

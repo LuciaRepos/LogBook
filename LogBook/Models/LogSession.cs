@@ -8,6 +8,6 @@ namespace LogBook.Models
         public int SessionID { get; set; }
         public DateTime SessionDate { get; set; }
         public int DurationMinutes { get; set; }
-        public string SessionDescription { get; set; }
+        public string? SessionDescription { get; set; }
     }
 }

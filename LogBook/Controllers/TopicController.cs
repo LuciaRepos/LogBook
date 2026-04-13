@@ -28,12 +28,12 @@ namespace LogBook.Controllers
 
             if (!string.IsNullOrEmpty(Theme))
             {
-                topics = topics.Where(t => t.Theme.Contains(Theme, StringComparison.OrdinalIgnoreCase)).ToList();
+                topics = topics.Where(t => t.Theme.ToString().Contains(Theme, StringComparison.OrdinalIgnoreCase)).ToList();
             }
 
             if(!string.IsNullOrEmpty(Content))
             {
-                topics = topics.Where(t => t.Content.Contains(Content, StringComparison.OrdinalIgnoreCase)).ToList();
+                topics = topics.Where(t => t.Content.ToString().Contains(Content, StringComparison.OrdinalIgnoreCase)).ToList();
             }
 
             return Ok(topics);
