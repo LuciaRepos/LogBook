@@ -17,7 +17,7 @@ namespace LogBook.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Topic>>> GetAll([FromQuery] string? TopicID = null, [FromQuery] string? Theme = null)
+        public async Task<ActionResult<IEnumerable<Topic>>> GetAll([FromQuery] string? TopicID = null, [FromQuery] string? Theme = null, [FromQuery] string? Content = null)
         {
             var topics = await context.Topics.ToListAsync();
 
@@ -29,6 +29,11 @@ namespace LogBook.Controllers
             if (!string.IsNullOrEmpty(Theme))
             {
                 topics = topics.Where(t => t.Theme.Contains(Theme, StringComparison.OrdinalIgnoreCase)).ToList();
+            }
+
+            if(!string.IsNullOrEmpty(Content))
+            {
+                topics = topics.Where(t => t.Content.Contains(Content, StringComparison.OrdinalIgnoreCase)).ToList();
             }
 
             return Ok(topics);
