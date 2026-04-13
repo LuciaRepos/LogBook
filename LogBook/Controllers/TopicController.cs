@@ -1,10 +1,10 @@
-﻿using LogBook_V2.Data;
-using LogBook_V2.Models;
+﻿using LogBook.Data;
+using LogBook.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace LogBook_V2.Controllers
+namespace LogBook.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -17,9 +17,20 @@ namespace LogBook_V2.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Topic>>> GetAll()
+        public async Task<ActionResult<IEnumerable<Topic>>> GetAll([FromQuery] string? TopicID = null, [FromQuery] string? Theme = null)
         {
             var topics = await context.Topics.ToListAsync();
+
+            if (!string.IsNullOrEmpty(TopicID))
+            {
+                topics = topics.Where(t => t.TopicID.ToString().Contains(TopicID, StringComparison.OrdinalIgnoreCase)).ToList();
+            }
+
+            if (!string.IsNullOrEmpty(Theme))
+            {
+                topics = topics.Where(t => t.Theme.Contains(Theme, StringComparison.OrdinalIgnoreCase)).ToList();
+            }
+
             return Ok(topics);
         }
 

@@ -1,10 +1,10 @@
-﻿using LogBook_V2.Data;
-using LogBook_V2.Models;
+﻿using LogBook.Data;
+using LogBook.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace LogBook_V2.Controllers
+namespace LogBook.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
